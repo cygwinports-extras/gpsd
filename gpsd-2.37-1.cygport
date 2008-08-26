@@ -1,0 +1,23 @@
+inherit python
+
+DESCRIPTION="GPS service daemon"
+HOMEPAGE="http://gpsd.berlios.de/"
+SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
+PATCH_URI="
+	2.37-no-undefined.patch
+	2.37-vpath.patch
+	2.37-python.patch
+	2.37-FIONREAD.patch
+"
+
+abi=17
+PKG_NAMES="${PN} libgps${abi} libgps-devel python-gps xgps"
+PKG_HINTS="bin lib devel python x11"
+PKG_CONTENTS[0]="--exclude=*.dll --exclude=man3 --exclude=xgps*
+                 usr/bin/ usr/sbin/ usr/share/"
+PKG_CONTENTS[1]="usr/bin/*-${abi}.dll"
+PKG_CONTENTS[2]="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/man/man3/"
+PKG_CONTENTS[3]="${PYTHON_SITELIB#/}"
+PKG_CONTENTS[4]="usr/bin/xgps* usr/share/man/man1/xgps*"
+
+DIFF_EXCLUDES="gpsd.h"

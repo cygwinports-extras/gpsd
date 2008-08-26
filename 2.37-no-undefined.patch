@@ -1,0 +1,11 @@
+--- origsrc/gpsd-2.37/Makefile.am	2008-02-17 11:40:47.000000000 -0600
++++ src/gpsd-2.37/Makefile.am	2008-08-26 12:29:52.022242800 -0500
+@@ -108,7 +108,7 @@
+ #
+ # Build shared libraries
+ #
+-libgps_la_LDFLAGS = -version-number 17:0:0
++libgps_la_LDFLAGS = -version-number 17:0:0 -no-undefined
+ lib_LTLIBRARIES = libgps.la
+ 
+ libgpsd_c_sources = \

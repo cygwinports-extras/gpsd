@@ -1,0 +1,13 @@
+--- origsrc/gpsd-2.37/gpsctl.c	2008-01-20 13:06:29.000000000 -0600
++++ src/gpsd-2.37/gpsctl.c	2008-08-26 12:28:16.459131200 -0500
+@@ -17,6 +17,10 @@
+ #include "gpsd_config.h"
+ #include "gpsd.h"
+ 
++#ifdef __CYGWIN__
++#define FIONREAD TIOCINQ
++#endif
++
+ static int debuglevel;
+ 
+ void gpsd_report(int errlevel UNUSED, const char *fmt, ... )
